@@ -10,5 +10,8 @@ open_proj
 # ignore all build files
 build/
 
+# ignore doc files
+docs/
+
 # ignore occult files
 .*
