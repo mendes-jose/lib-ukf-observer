@@ -1,0 +1,11 @@
+# ignore .o and .a files
+*.[oa]
+
+# ignore tmp files
+*~
+
+# ignore open_proj sh file
+open_proj
+
+# ignore all build files
+build/
