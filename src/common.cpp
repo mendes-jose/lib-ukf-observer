@@ -3,20 +3,20 @@
 
 double Common::finvsqrt (double number)
 {
-		double dnumber = static_cast<float>(number);
-        long i;
-        float x2, y;
-        const float threehalfs = 1.5F;
- 
-        x2 = dnumber * 0.5F;
-        y  = dnumber;
-        i  = * ( long * ) &y;			// evil floating point bit level hacking
-        i  = 0x5f375a86 - ( i >> 1 );               // Chris Lomont constant from wikipedia
-        y  = * ( float * ) &i;
-        y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
-//      y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration,
+	float dnumber = static_cast<float>(number);
+	long i;
+	float x2, y;
+	const float threehalfs = 1.5F;
+
+	x2 = dnumber * 0.5F;
+	y  = dnumber;
+	i  = * ( long * ) &y;			// evil floating point bit level hacking
+	i  = 0x5f375a86 - ( i >> 1 );               // Chris Lomont constant from wikipedia
+	y  = * ( float * ) &i;
+	y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
+//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration,
 													// this can be removed
-        return static_cast<double>(y);
+  return static_cast<double>(y);
 }
 
 /*

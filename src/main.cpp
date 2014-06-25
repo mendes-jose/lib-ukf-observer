@@ -6,7 +6,7 @@ using namespace Common;
 int main( int argc, char** argv )
 {
 	Sensor sensor;
-	std::string xmlfilename ("../CONFIG/system_model.xml");
+	std::string xmlfilename ("./config/system_model.xml");
 	Observer obs;
 	obsParam_t obsparam = {&obs, &sensor, &xmlfilename};
 //	std::cout << "OI" << std::endl;

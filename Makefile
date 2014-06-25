@@ -1,15 +1,15 @@
 # Define executable name
-BIN = test
+BIN = build/test
 
 # Define source files
-CPP_SRCS =  common.cpp\
-		sensor.cpp\
-		sysmodelparser.cpp\
-		observer.cpp\
-		main.cpp
+CPP_SRCS =  src/common.cpp\
+		src/sensor.cpp\
+		src/sysmodelparser.cpp\
+		src/observer.cpp\
+		src/main.cpp
 
 # Define header file paths
-INCPATH = -I./
+INCPATH = -Ihdr/
 
 # Define the -L library path(s)
 LDFLAGS =
@@ -19,7 +19,7 @@ LIBS = /usr/local/lib/libmuparserd.so -lrt
 
 # Only in special cases should anything be edited below this line
 OBJS      = $(CPP_SRCS:.cpp=.o)
-CXXFLAGS  = -Wall -ansi -pedantic
+CXXFLAGS  = -c -Wall -ansi -pedantic
 DEP_FILE  = .depend
 
 
@@ -42,7 +42,7 @@ $(BIN): $(OBJS)
 #
 .cpp.o:
 	@echo Compiling $<
-	@$(CXX) -c $(CXXFLAGS) $(INCPATH) $<
+	@$(CXX) $(CXXFLAGS) $(INCPATH) $< -o $@
 
 # For cleaning up the project
 #
@@ -53,6 +53,13 @@ distclean: clean
 	$(RM) $(BIN)
 	$(RM) $(DEP_FILE)
 
+# For documenting
+#
+doc:
+	doxygen docs/doxy_config ; cd latex ; sh docs/fixtex.sh ; $(MAKE)
+	mv -f src/latex/refman.pdf src/html docs/
+	mv -f src/html docs/	
+	$(RM) src/latex src/html
 
 # For determining source file dependencies
 #

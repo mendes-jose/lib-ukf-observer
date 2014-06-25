@@ -88,8 +88,7 @@ SysModelParser::SysModelParser (const std::string & XMLFILEPATH)
 	{
 		this->crosscorr.Pvw.push_back(v.second.data());
 	}
-
-	write_xml ("./newxmlfile.xml", sysmodel);
+	write_xml ("./config/auto_gen_xmlfile.xml", sysmodel);
 }
 
 SysModelParser::~SysModelParser () {}
