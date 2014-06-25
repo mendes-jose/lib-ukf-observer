@@ -11,7 +11,7 @@ double Common::finvsqrt (double number)
         x2 = dnumber * 0.5F;
         y  = dnumber;
         i  = * ( long * ) &y;			// evil floating point bit level hacking
-        i  = 0x5f375a86 - ( i >> 1 );               // Chris Lomont constant
+        i  = 0x5f375a86 - ( i >> 1 );               // Chris Lomont constant from wikipedia
         y  = * ( float * ) &i;
         y  = y * ( threehalfs - ( x2 * y * y ) );   // 1st iteration
 //      y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration,
